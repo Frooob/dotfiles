@@ -1,0 +1,4 @@
+node_modules/
+plugged/
+.netrwhist
+autoload/
