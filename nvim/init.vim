@@ -50,7 +50,7 @@ noremap <Leader>P "+p
 nmap gx viW"ay:!open <C-R>a &<CR>
 
 
-" Enable mouse
+" Enable mousei
 " set mouse=a
 " if !has('nvim')
 "     set encoding=utf-8
