@@ -79,12 +79,15 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
+Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox' 
 Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-commentary'
 " yarn and npm must be installed for this
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+if system('uname') =~ "Darwin"
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+endif
 Plug 'Yggdroot/indentLine'
 
 call plug#end()
@@ -108,7 +111,12 @@ EOF
 
 
 " gruvbox
-colorscheme gruvbox
+if system('uname') =~ "Darwin"
+    colorscheme gruvbox
+else
+    colorscheme one
+endif
+
 set background=dark
 
 " airline
