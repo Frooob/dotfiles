@@ -1,3 +1,4 @@
+let mapleader =" "
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -24,6 +25,7 @@ set colorcolumn=80 " draw the line!
 set termguicolors
 set splitright
 set splitbelow
+set clipboard+=unnamed
 
 " Enable shift+tab to unindent
 " for command mode
@@ -31,6 +33,9 @@ nnoremap <S-Tab> <<
 nnoremap <Tab> >>
 " for insert mode
 inoremap <S-Tab> <C-d>
+" for visual mode
+vnoremap <S-Tab> < gv
+vnoremap <Tab> > gv
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 nnoremap <C-J> <C-W><C-J>
@@ -41,21 +46,22 @@ nnoremap <leader>q :bp<cr>:bd #<cr>
 nnoremap d "_d
 vnoremap d "_d
 nnoremap <c-q> :bd <cr>
-noremap <Leader>y "*y
-noremap <Leader>p "*p
-noremap <Leader>Y "+y
-noremap <Leader>P "+p
+" noremap <Leader>y "*y
+noremap <silent><Leader>num :set invrelativenumber <cr>
+nnoremap <Leader>source :source $MYVIMRC <cr>
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 " nnoremap j gj
 " nnoremap j gj
 nmap gx viW"ay:!open <C-R>a &<CR>
+inoremap <C-d> <Del>
 
 
 " Enable mouse
-" set mouse=a
-" if !has('nvim')
-"     set encoding=utf-8
-"     set ttymouse=xterm2
-" endif
+set mouse=a
+if !has('nvim')
+    set encoding=utf-8
+    set ttymouse=xterm2
+endif
 
 " Persistent Undo
 if has('persistent_undo')
@@ -76,6 +82,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
+Plug 'chr4/nginx.vim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
@@ -88,7 +95,9 @@ Plug 'tpope/vim-commentary'
 if system('uname') =~ "Darwin"
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 endif
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
+Plug 'machakann/vim-highlightedyank'
+Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
 
 call plug#end()
 
@@ -146,7 +155,10 @@ fun! StartREPL(repl)
 endfun
 
 " let g:slime_dont_ask_default = 1
-noremap <silent> tt :vsplit<bar>:call StartREPL('ipython')<CR>
+noremap <silent> <C-t><C-t><C-t> :vsplit<bar>:call StartREPL('ipython')<CR>
 tnoremap <Esc> <C-\><C-n><CR>
 
 set cmdheight=1
+
+" highlighted yank
+let g:highlightedyank_highlight_duration = 500

@@ -7,13 +7,19 @@
         "html",
         "yaml",
         "json",
-        "python"
+        "python",
+        "rust"
     ],
-    // python config
     "python.linting.enabled": true,
     "python.linting.pylintEnabled": true,
     "snippets.ultisnips.directories": [
         "UltiSnips",
         "~/.config/nvim/utils/snips"
+    ],
+    "python.linting.pylintArgs": [
+        "--load-plugins=pylint_django",
+        "--load-plugins=pylint_django.checkers.migrations",
+        "--errors-only",
+        "--disable=django-not-configured"
     ]
 }
