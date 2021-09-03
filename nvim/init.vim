@@ -29,13 +29,13 @@ set clipboard+=unnamed
 
 " Enable shift+tab to unindent
 " for command mode
-nnoremap <S-Tab> <<
-nnoremap <Tab> >>
-" for insert mode
-inoremap <S-Tab> <C-d>
-" for visual mode
-vnoremap <S-Tab> < gv
-vnoremap <Tab> > gv
+" nnoremap <S-Tab> <<
+" nnoremap <Tab> >>
+" " for insert mode
+" inoremap <S-Tab> <C-d>
+" " for visual mode
+" vnoremap <S-Tab> < gv
+" vnoremap <Tab> > gv
 " Make double-<Esc> clear search highlights
 nnoremap <silent> <Esc><Esc> <Esc>:nohlsearch<CR><Esc>
 nnoremap <C-J> <C-W><C-J>
@@ -50,10 +50,17 @@ nnoremap <c-q> :bd <cr>
 noremap <silent><Leader>num :set invrelativenumber <cr>
 nnoremap <Leader>source :source $MYVIMRC <cr>
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
-" nnoremap j gj
-" nnoremap j gj
+" Open url
 nmap gx viW"ay:!open <C-R>a &<CR>
 inoremap <C-d> <Del>
+" Allow yanking inside line https://stackoverflow.com/a/61624228
+vnoremap al :<C-U>normal 0v$h<CR>
+omap al :normal val<CR>
+vnoremap il :<C-U>normal ^vg_<CR>
+omap il :normal vil<CR>
+
+" Generate TagHack
+inoremap <buffer> <C-s> <esc>yiwi<lt><esc>ea></><esc>hpF>i
 
 
 " Enable mouse
@@ -91,6 +98,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
 " yarn and npm must be installed for this
 if system('uname') =~ "Darwin"
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -98,10 +106,14 @@ endif
 " Plug 'Yggdroot/indentLine'
 Plug 'machakann/vim-highlightedyank'
 Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'alvan/vim-closetag'
 
 call plug#end()
 
 " Config Files for Plugins
+" closetag
+source $HOME/.config/nvim/plug-config/vim-closetag.vim
+
 "nvim tree
 source $HOME/.config/nvim/plug-config/nvim_tree.vim
 
@@ -141,6 +153,9 @@ let g:slime_python_ipython = 1
 " commentary
 nnoremap <s-x> :Commentary<CR>
 vnoremap <s-x> :Commentary<CR>
+
+" vim-surround
+let g:surround_45 = "{/* \r */}"
 
 " Markdown Preview
 source $HOME/.config/nvim/plug-config/markdown_preview.vim

@@ -1,25 +1,26 @@
 {
-    "coc.preferences.formatOnSaveFiletypes": [
-        "css",
-        "markdown",
-        "javascript",
-        "graphql",
-        "html",
-        "yaml",
-        "json",
-        "python",
-        "rust"
-    ],
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "snippets.ultisnips.directories": [
-        "UltiSnips",
-        "~/.config/nvim/utils/snips"
-    ],
-    "python.linting.pylintArgs": [
-        "--load-plugins=pylint_django",
-        "--load-plugins=pylint_django.checkers.migrations",
-        "--errors-only",
-        "--disable=django-not-configured"
-    ]
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "graphql",
+    "html",
+    "yaml",
+    "json",
+    "python",
+    "rust",
+    "typescriptreact",
+    "typescript",
+    "javascriptreact"
+  ],
+  "javascript.suggestionActions.enabled": false,
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
+  "python.linting.pylintArgs": [
+    "--load-plugins=pylint_django",
+    "--load-plugins=pylint_django.checkers.migrations",
+    "--errors-only",
+    "--disable=django-not-configured"
+  ]
 }
