@@ -75,7 +75,7 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ThePrimeagen/vim-be-good'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons' 
@@ -88,9 +88,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'rakr/vim-one'
 Plug 'morhetz/gruvbox' 
-Plug 'tpope/vim-fugitive'
+" Plug 'tpope/vim-fugitive'
 Plug 'jpalardy/vim-slime'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-sleuth'
 " yarn and npm must be installed for this
 if system('uname') =~ "Darwin"
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -106,7 +107,7 @@ call plug#end()
 source $HOME/.config/nvim/plug-config/nvim_tree.vim
 
 " coc
-source $HOME/.config/nvim/plug-config/coc.vim
+" source $HOME/.config/nvim/plug-config/coc.vim
 
 " treesitter
 lua <<EOF
